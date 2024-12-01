@@ -11,6 +11,7 @@ const CenteredImage = () => {
     const randomImage = images[Math.floor(Math.random() * images.length)];
 
     // Add a unique query parameter to bypass caching
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const cacheBustingImage = `${randomImage}?v=${Math.random()}`;
 
     return (
