@@ -8,6 +8,7 @@ const images = [
     "/images/1.jpeg",
     "/images/2.jpeg",
     "/images/3.jpeg",
+    "/images/4.jpeg",
 ];
 
 const Home = () => {
