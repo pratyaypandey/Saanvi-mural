@@ -1,32 +1,43 @@
-import Image from 'next/image';
+"use client"
+
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
 // List of image paths
 const images = [
     "/images/1.jpeg",
-    "/images/2.jpeg", "/images/3.jpeg",
+    "/images/2.jpeg",
+    "/images/3.jpeg",
 ];
 
-const CenteredImage = () => {
-    // Randomly select an image
-    const randomImage = images[Math.floor(Math.random() * images.length)];
+const Home = () => {
+    const [randomImage, setRandomImage] = useState(images[0]);
 
-    // Add a unique query parameter to bypass caching
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const cacheBustingImage = `${randomImage}?v=${Math.random()}`;
+    useEffect(() => {
+        // Select a random image on the client side
+        const selectedImage = images[Math.floor(Math.random() * images.length)];
+        setRandomImage(selectedImage);
+    }, []);
 
     return (
-        <div className="flex justify-center items-center h-screen bg-gray-100">
-            <div className="flex justify-center items-center w-full">
+        <div className="relative min-h-screen">
+            {/* Background Image */}
+            <div className="absolute inset-0 flex justify-center items-center">
                 <Image
                     src={randomImage}
-                    alt="Randomly selected image"
+                    alt="Random image"
                     width={800}
                     height={800}
                     className="rounded-lg shadow-lg"
                 />
             </div>
+
+            {/* Centered Text */}
+            <div className="absolute inset-0 flex items-center justify-center">
+                <h1 className="text-4xl sm:text-6xl font-bold text-white">I love you.</h1>
+            </div>
         </div>
     );
 };
 
-export default CenteredImage;
+export default Home;
