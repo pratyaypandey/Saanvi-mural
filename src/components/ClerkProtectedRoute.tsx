@@ -33,14 +33,16 @@ export default function ClerkProtectedRoute({ children }: ClerkProtectedRoutePro
               Sign in to access the admin panel
             </p>
           </div>
-          <SignIn 
-            appearance={{
-              elements: {
-                formButtonPrimary: 'bg-blue-600 hover:bg-blue-700 text-white',
-                card: 'shadow-lg',
-              }
-            }}
-          />
+          <div className="flex justify-center">
+            <SignIn 
+              appearance={{
+                elements: {
+                  formButtonPrimary: 'bg-blue-600 hover:bg-blue-700 text-white',
+                  card: 'shadow-lg',
+                }
+              }}
+            />
+          </div>
         </div>
       </div>
     )
