@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface ImageData {
   id: string
@@ -14,6 +17,7 @@ interface ImageData {
 const Home = () => {
     const [randomImage, setRandomImage] = useState<ImageData | null>(null);
     const [loading, setLoading] = useState(true);
+    const router = useRouter();
 
     useEffect(() => {
         fetchImages();
@@ -41,6 +45,17 @@ const Home = () => {
     if (loading) {
         return (
             <div className="relative min-h-screen">
+                {/* Admin Button */}
+                <div className="absolute top-4 right-4 z-10">
+                    <Button
+                        size="icon"
+                        variant="secondary"
+                        onClick={() => router.push('/admin')}
+                        className="bg-white/20 backdrop-blur-sm border-white/30 text-blue-500 hover:bg-white/30"
+                    >
+                        <Plus className="h-5 w-5" />
+                    </Button>
+                </div>
                 <div className="absolute inset-0 flex items-center justify-center">
                     <h1 className="text-4xl sm:text-6xl font-bold text-white">I love you.</h1>
                 </div>
@@ -51,6 +66,17 @@ const Home = () => {
     if (!randomImage) {
         return (
             <div className="relative min-h-screen">
+                {/* Admin Button */}
+                <div className="absolute top-4 right-4 z-10">
+                    <Button
+                        size="icon"
+                        variant="secondary"
+                        onClick={() => router.push('/admin')}
+                        className="bg-white/20 backdrop-blur-sm border-white/30 text-blue-500 hover:bg-white/30"
+                    >
+                        <Plus className="h-5 w-5" />
+                    </Button>
+                </div>
                 <div className="absolute inset-0 flex items-center justify-center">
                     <h1 className="text-4xl sm:text-6xl font-bold text-white">I love you.</h1>
                 </div>
@@ -60,6 +86,18 @@ const Home = () => {
 
     return (
         <div className="relative min-h-screen">
+            {/* Admin Button */}
+            <div className="absolute top-4 right-4 z-10">
+                <Button
+                    size="icon"
+                    variant="secondary"
+                    onClick={() => router.push('/admin')}
+                    className="bg-white/20 backdrop-blur-sm border-white/30 text-blue-500 hover:bg-white/30"
+                >
+                    <Plus className="h-5 w-5" />
+                </Button>
+            </div>
+
             {/* Background Image */}
             <div className="absolute inset-0 flex justify-center items-center">
                 <Image

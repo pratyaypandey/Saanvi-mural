@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import ClerkProtectedRoute from "@/components/ClerkProtectedRoute"
 import { useUser, SignOutButton } from '@clerk/nextjs'
 
@@ -23,6 +24,7 @@ const AdminPage = () => {
   const [altText, setAltText] = useState("")
   const [storageUsage, setStorageUsage] = useState(0)
   const [uploadError, setUploadError] = useState<string | null>(null)
+  const router = useRouter()
 
   useEffect(() => {
     fetchImages()
@@ -139,8 +141,21 @@ const AdminPage = () => {
     <ClerkProtectedRoute>
       <div className="min-h-screen bg-gray-100 p-8">
         <div className="max-w-6xl mx-auto">
+          {/* Back Button */}
+          <div className="mb-6">
+            <button
+              onClick={() => router.push('/')}
+              className="flex items-center gap-2 text-gray-600 hover:text-gray-800 transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              <span>Back to photos</span>
+            </button>
+          </div>
+          
           <div className="flex justify-between items-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-800">Saanvi&apos;s Mural - Admin</h1>
+            <h1 className="text-3xl font-bold text-gray-800">Saanvi&apos;s Mural ❤️</h1>
             <div className="flex items-center gap-4">
               <span className="text-sm text-gray-600">
                 Signed in as {user?.emailAddresses[0]?.emailAddress}
@@ -180,7 +195,7 @@ const AdminPage = () => {
           
           {/* Upload Section */}
           <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-            <h2 className="text-xl font-semibold mb-4">Upload New Image</h2>
+            <h2 className="text-xl font-semibold mb-4">Upload New Memories</h2>
             <div className="flex gap-4 items-end">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
