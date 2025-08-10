@@ -18,8 +18,8 @@ export async function createWhitelistedUser(email: string) {
       emailAddress: [email],
     })
 
-    if (existingUsers.length > 0) {
-      return existingUsers[0]
+    if (existingUsers.data.length > 0) {
+      return existingUsers.data[0]
     }
 
     // Create new user if they don't exist
