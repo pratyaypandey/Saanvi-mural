@@ -1,4 +1,14 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Saanvi's Mural
+
+A Next.js application for managing and displaying a digital mural with OAuth-protected admin functionality.
+
+## Features
+
+- **Public Mural Display**: View the mural on the main page
+- **Admin Panel**: Protected admin interface for managing images
+- **OAuth Authentication**: Secure access using Supabase Auth with email whitelist
+- **Image Management**: Upload, delete, and organize mural images
+- **Storage Monitoring**: Track storage usage and limits
 
 ## Getting Started
 
@@ -19,6 +29,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Authentication
+
+The admin panel is protected by Clerk authentication with email whitelist functionality. Only emails on the whitelist can access the admin functionality.
+
+See [CLERK_SETUP.md](./CLERK_SETUP.md) for detailed setup instructions.
 
 ## Learn More
 

@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URL_NON_POOLING")
+}
+
+model Image {
+  id          String   @id @default(cuid())
+  filename    String   @unique
+  url         String
+  storagePath String   @unique // Supabase storage path
+  alt         String?
+  uploadedAt  DateTime @default(now())
+  isActive    Boolean  @default(true)
+  order       Int      @default(0)
+  fileSize    Int      // File size in bytes
+  mimeType    String   // MIME type for validation
+  dimensions  Json?    // Store width/height as JSON
+  
+  @@index([isActive, order])
+  @@index([uploadedAt])
+} 
