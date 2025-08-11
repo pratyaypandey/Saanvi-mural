@@ -22,4 +22,21 @@ model Image {
   
   @@index([isActive, order])
   @@index([uploadedAt])
+}
+
+model FoodImage {
+  id          String   @id @default(cuid())
+  filename    String   @unique
+  url         String
+  storagePath String   @unique // Supabase storage path
+  alt         String?
+  uploadedAt  DateTime @default(now())
+  isActive    Boolean  @default(true)
+  order       Int      @default(0)
+  fileSize    Int      // File size in bytes
+  mimeType    String   // MIME type for validation
+  dimensions  Json?    // Store width/height as JSON
+  
+  @@index([isActive, order])
+  @@index([uploadedAt])
 } 
